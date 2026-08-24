@@ -1,0 +1,568 @@
+<title>ボルニューマ看護マニュアル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #F6F4EE;
+    --surface: #FFFFFF;
+    --surface-2: #EFECE3;
+    --border: #DAD3C3;
+    --ink: #1E2620;
+    --ink-soft: #55594F;
+    --ink-faint: #8A8D7F;
+    --accent: #0E6B5C;
+    --accent-ink: #FFFFFF;
+    --accent-soft: #E3F0EB;
+    --accent-soft-border: #BBDBD1;
+    --warn: #A9631A;
+    --warn-soft: #FBEEE0;
+    --warn-soft-border: #E9CBA2;
+    --danger: #A3352B;
+    --danger-soft: #FBEAE7;
+    --danger-soft-border: #E9BEB6;
+    --fill: #FFFDF6;
+    --fill-border: #C9BFA0;
+    --shadow: 0 1px 2px rgba(30, 38, 32, 0.06), 0 8px 24px rgba(30, 38, 32, 0.05);
+
+    --font-display: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    --font-body: "Zen Kaku Gothic New", "Hiragino Sans", "Yu Gothic", sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131715;
+      --surface: #1B211D;
+      --surface-2: #222A24;
+      --border: #35402F;
+      --ink: #E9E7DD;
+      --ink-soft: #B5B7A9;
+      --ink-faint: #7E8274;
+      --accent: #5FC1A9;
+      --accent-ink: #0D1A16;
+      --accent-soft: #1C3129;
+      --accent-soft-border: #2E5647;
+      --warn: #E3A75C;
+      --warn-soft: #2E2416;
+      --warn-soft-border: #5A4526;
+      --danger: #E28A7C;
+      --danger-soft: #2E1D1A;
+      --danger-soft-border: #5C3831;
+      --fill: #1A1F1B;
+      --fill-border: #454B3C;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #131715;
+    --surface: #1B211D;
+    --surface-2: #222A24;
+    --border: #35402F;
+    --ink: #E9E7DD;
+    --ink-soft: #B5B7A9;
+    --ink-faint: #7E8274;
+    --accent: #5FC1A9;
+    --accent-ink: #0D1A16;
+    --accent-soft: #1C3129;
+    --accent-soft-border: #2E5647;
+    --warn: #E3A75C;
+    --warn-soft: #2E2416;
+    --warn-soft-border: #5A4526;
+    --danger: #E28A7C;
+    --danger-soft: #2E1D1A;
+    --danger-soft-border: #5C3831;
+    --fill: #1A1F1B;
+    --fill-border: #454B3C;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+    display: grid;
+    grid-template-columns: 236px minmax(0, 1fr);
+    gap: 40px;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    grid-column: 1 / -1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    padding: 30px 34px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .masthead::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--accent);
+  }
+  .masthead .eyebrow {
+    font-size: 11.5px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+  .masthead h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.3;
+    margin: 0;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  .masthead .fillname {
+    color: var(--ink-faint);
+    font-weight: 500;
+  }
+  .doc-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, auto));
+    gap: 6px 22px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .doc-meta dt { font-weight: 700; color: var(--ink-faint); }
+  .doc-meta dd { margin: 0; }
+  .doc-meta .fill { color: var(--accent); border-bottom: 1px dashed var(--accent-soft-border); }
+
+  /* ---------- TOC ---------- */
+  .toc {
+    align-self: start;
+    position: sticky;
+    top: 24px;
+  }
+  .toc-title {
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    margin: 0 0 12px 2px;
+  }
+  .toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid var(--border);
+  }
+  .toc li { margin: 0; }
+  .toc a {
+    display: block;
+    padding: 7px 0 7px 16px;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .toc a:hover { color: var(--accent); border-left-color: var(--accent); }
+  .toc .num {
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-faint);
+    margin-right: 8px;
+  }
+
+  /* ---------- Main content ---------- */
+  main { min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+
+  section.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    padding: 28px 32px 30px;
+    scroll-margin-top: 24px;
+  }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin: 0 0 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sec-head .idx {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .sec-head h2 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  p { margin: 0 0 12px; color: var(--ink-soft); max-width: 66ch; }
+  p:last-child { margin-bottom: 0; }
+
+  .fillblock {
+    background: var(--fill);
+    border: 1px dashed var(--fill-border);
+    border-radius: 3px;
+    padding: 12px 16px;
+    color: var(--ink-faint);
+    font-size: 14px;
+    margin: 0 0 12px;
+  }
+  .fillblock:last-child { margin-bottom: 0; }
+  .fillblock b { color: var(--ink-soft); font-weight: 700; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td {
+    text-align: left;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--surface-2);
+    font-weight: 700;
+    color: var(--ink-soft);
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .table-wrap { overflow-x: auto; border-radius: 3px; }
+
+  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
+  ol.steps li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  ol.steps li::before {
+    content: counter(step);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid var(--accent-soft-border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  ol.steps .step-body p { margin: 0; }
+  ol.steps .step-body .fillblock { margin-top: 6px; }
+
+  ul.plain { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
+  ul.plain li { margin-bottom: 6px; }
+  ul.plain li:last-child { margin-bottom: 0; }
+
+  .callout {
+    border-radius: 3px;
+    padding: 14px 18px;
+    margin: 14px 0 0;
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+  }
+  .callout:first-child { margin-top: 0; }
+  .callout .tag {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    height: fit-content;
+    white-space: nowrap;
+  }
+  .callout p { margin: 0; }
+  .callout.danger { background: var(--danger-soft); border: 1px solid var(--danger-soft-border); }
+  .callout.danger .tag { background: var(--danger); color: #FFF6F4; }
+  .callout.danger p { color: var(--danger); font-weight: 500; }
+  .callout.warn { background: var(--warn-soft); border: 1px solid var(--warn-soft-border); }
+  .callout.warn .tag { background: var(--warn); color: #FFF8EE; }
+  .callout.warn p { color: var(--warn); font-weight: 500; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .subgroup h3 {
+    font-size: 13.5px;
+    letter-spacing: 0.02em;
+    color: var(--ink-faint);
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+
+  .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .checklist li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-soft); font-size: 14px; }
+  .checklist .box {
+    flex-shrink: 0;
+    width: 16px; height: 16px;
+    margin-top: 2px;
+    border: 1.5px solid var(--fill-border);
+    border-radius: 3px;
+    background: var(--fill);
+  }
+
+  footer.doc-footer {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 880px) {
+    .page { grid-template-columns: 1fr; }
+    .toc { position: static; }
+    .toc ol { display: flex; flex-wrap: wrap; gap: 4px 4px; border-left: none; }
+    .toc a { border-left: none; border: 1px solid var(--border); border-radius: 3px; padding: 6px 10px; }
+    .two-col { grid-template-columns: 1fr; }
+    section.card { padding: 22px 18px; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .toc { display: none; }
+    .page { grid-template-columns: 1fr; padding: 0; }
+    section.card { box-shadow: none; border: 1px solid #ccc; break-inside: avoid; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="masthead">
+    <div>
+      <p class="eyebrow">看護手順マニュアル ｜ NURSING PROCEDURE MANUAL</p>
+      <h1>ボルニューマ <span class="fillname">投与・取り扱いマニュアル</span></h1>
+    </div>
+    <dl class="doc-meta">
+      <dt>対象製品</dt><dd class="fill">〔製品名・剤形を記入〕</dd>
+      <dt>文書番号</dt><dd class="fill">〔管理番号を記入〕</dd>
+      <dt>作成日</dt><dd class="fill">〔YYYY/MM/DD〕</dd>
+      <dt>版数</dt><dd class="fill">第〔  〕版</dd>
+      <dt>作成者</dt><dd class="fill">〔氏名・職種〕</dd>
+      <dt>承認者</dt><dd class="fill">〔氏名・職種〕</dd>
+    </dl>
+  </div>
+
+  <nav class="toc">
+    <p class="toc-title">目次 CONTENTS</p>
+    <ol>
+      <li><a href="#overview"><span class="num">01</span>概要・目的</a></li>
+      <li><a href="#indication"><span class="num">02</span>適応・対象患者</a></li>
+      <li><a href="#contra"><span class="num">03</span>禁忌・慎重投与</a></li>
+      <li><a href="#supplies"><span class="num">04</span>準備物品</a></li>
+      <li><a href="#dosage"><span class="num">05</span>用法・用量</a></li>
+      <li><a href="#precheck"><span class="num">06</span>投与前確認</a></li>
+      <li><a href="#procedure"><span class="num">07</span>投与手順</a></li>
+      <li><a href="#monitoring"><span class="num">08</span>観察・モニタリング</a></li>
+      <li><a href="#adverse"><span class="num">09</span>副作用・急変時対応</a></li>
+      <li><a href="#storage"><span class="num">10</span>保管・取り扱い</a></li>
+      <li><a href="#disposal"><span class="num">11</span>廃棄方法</a></li>
+      <li><a href="#refs"><span class="num">12</span>参考資料</a></li>
+      <li><a href="#history"><span class="num">13</span>改訂履歴</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section class="card" id="overview">
+      <div class="sec-head"><span class="idx">01</span><h2>概要・目的</h2></div>
+      <p>本マニュアルは、〔製品名〕を安全かつ適切に取り扱うための看護手順を定めることを目的とする。</p>
+      <div class="fillblock"><b>記入例：</b>薬効分類、一般名、主成分、本剤の位置づけ（新規導入／既存手順の改訂 等）をここに記載する。</div>
+    </section>
+
+    <section class="card" id="indication">
+      <div class="sec-head"><span class="idx">02</span><h2>適応・対象患者</h2></div>
+      <div class="two-col">
+        <div class="subgroup">
+          <h3>適応</h3>
+          <div class="fillblock">〔適応疾患・適応となる状態を記入〕</div>
+        </div>
+        <div class="subgroup">
+          <h3>対象患者・年齢等の条件</h3>
+          <div class="fillblock">〔年齢・体重・既往歴等の条件を記入〕</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="contra">
+      <div class="sec-head"><span class="idx">03</span><h2>禁忌・慎重投与</h2></div>
+      <div class="callout danger">
+        <span class="tag">禁忌</span>
+        <p>〔投与してはならない患者・状態を記入〕</p>
+      </div>
+      <div class="callout warn">
+        <span class="tag">慎重投与</span>
+        <p>〔慎重な判断を要する患者・状態を記入〕</p>
+      </div>
+    </section>
+
+    <section class="card" id="supplies">
+      <div class="sec-head"><span class="idx">04</span><h2>準備物品</h2></div>
+      <ul class="plain">
+        <li>〔薬剤本体・添付溶解液など〕</li>
+        <li>〔注射器・注射針のサイズ〕</li>
+        <li>〔消毒用品〕</li>
+        <li>〔救急対応物品（アナフィラキシー対応セット等）〕</li>
+        <li>〔記録用紙・説明用資材〕</li>
+      </ul>
+    </section>
+
+    <section class="card" id="dosage">
+      <div class="sec-head"><span class="idx">05</span><h2>用法・用量</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>対象</th><th>用量</th><th>投与経路</th><th>投与間隔・回数</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="fill">〔対象区分〕</td><td class="fill">〔用量〕</td><td class="fill">〔経路：皮下／筋肉内 等〕</td><td class="fill">〔間隔・回数〕</td></tr>
+            <tr><td class="fill">〔対象区分〕</td><td class="fill">〔用量〕</td><td class="fill">〔経路〕</td><td class="fill">〔間隔・回数〕</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="precheck">
+      <div class="sec-head"><span class="idx">06</span><h2>投与前確認</h2></div>
+      <ul class="checklist">
+        <li><span class="box"></span>患者本人確認（氏名・生年月日）</li>
+        <li><span class="box"></span>アレルギー歴・既往歴の確認</li>
+        <li><span class="box"></span>直近の体調・発熱の有無</li>
+        <li><span class="box"></span>説明と同意（インフォームドコンセント）の確認</li>
+        <li><span class="box"></span>薬剤の外観・使用期限・ロット番号確認</li>
+        <li><span class="box"></span>〔施設固有の確認項目を追記〕</li>
+      </ul>
+    </section>
+
+    <section class="card" id="procedure">
+      <div class="sec-head"><span class="idx">07</span><h2>投与手順</h2></div>
+      <ol class="steps">
+        <li><div class="step-body"><p>手指衛生を行い、必要な防護具を装着する。</p></div></li>
+        <li><div class="step-body"><p>薬剤の外観・混濁の有無・使用期限を確認する。</p><div class="fillblock">〔溶解・調製方法があれば記入〕</div></div></li>
+        <li><div class="step-body"><p>患者に体位・部位を説明し、安全な体勢を確保する。</p></div></li>
+        <li><div class="step-body"><p>投与部位を消毒し、乾燥を待つ。</p><div class="fillblock">〔部位：三角筋・大腿外側広筋 等を記入〕</div></div></li>
+        <li><div class="step-body"><p>手順に従い投与する。</p><div class="fillblock">〔穿刺角度・投与速度など具体的手技を記入〕</div></div></li>
+        <li><div class="step-body"><p>投与後、患者の状態を一定時間観察する。</p><div class="fillblock">〔観察時間の目安を記入〕</div></div></li>
+        <li><div class="step-body"><p>実施記録（薬剤名・ロット番号・投与部位・実施者）を記載する。</p></div></li>
+      </ol>
+    </section>
+
+    <section class="card" id="monitoring">
+      <div class="sec-head"><span class="idx">08</span><h2>観察・モニタリング</h2></div>
+      <ul class="plain">
+        <li>〔バイタルサイン測定タイミング〕</li>
+        <li>〔局所反応（発赤・腫脹・疼痛）の観察ポイント〕</li>
+        <li>〔全身反応の観察ポイント〕</li>
+        <li>〔経過観察の終了基準〕</li>
+      </ul>
+    </section>
+
+    <section class="card" id="adverse">
+      <div class="sec-head"><span class="idx">09</span><h2>副作用・急変時対応</h2></div>
+      <div class="two-col">
+        <div class="subgroup">
+          <h3>主な副作用</h3>
+          <div class="fillblock">〔頻度の高い副作用・局所反応を記入〕</div>
+        </div>
+        <div class="subgroup">
+          <h3>重大な副作用</h3>
+          <div class="fillblock">〔アナフィラキシー等、重篤な副作用を記入〕</div>
+        </div>
+      </div>
+      <div class="callout danger">
+        <span class="tag">急変時</span>
+        <p>〔アナフィラキシー等急変時の初期対応手順・報告フロー・救急要請基準を記入〕</p>
+      </div>
+    </section>
+
+    <section class="card" id="storage">
+      <div class="sec-head"><span class="idx">10</span><h2>保管・取り扱い</h2></div>
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr><th>保管温度</th><td class="fill">〔温度範囲を記入〕</td></tr>
+            <tr><th>遮光の要否</th><td class="fill">〔要／不要〕</td></tr>
+            <tr><th>凍結の可否</th><td class="fill">〔可／不可〕</td></tr>
+            <tr><th>開封後の使用期限</th><td class="fill">〔期限を記入〕</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="disposal">
+      <div class="sec-head"><span class="idx">11</span><h2>廃棄方法</h2></div>
+      <p>使用済み鋭利器材・残薬は院内の医療廃棄物基準に従い廃棄する。</p>
+      <div class="fillblock">〔バイアル・注射器等の分別区分、施設の廃棄ルールを記入〕</div>
+    </section>
+
+    <section class="card" id="refs">
+      <div class="sec-head"><span class="idx">12</span><h2>参考資料</h2></div>
+      <ul class="plain">
+        <li>〔添付文書（IF文書）名・版数〕</li>
+        <li>〔メーカー提供資料〕</li>
+        <li>〔関連ガイドライン〕</li>
+      </ul>
+    </section>
+
+    <section class="card" id="history">
+      <div class="sec-head"><span class="idx">13</span><h2>改訂履歴</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>版数</th><th>改訂日</th><th>改訂内容</th><th>改訂者</th></tr></thead>
+          <tbody>
+            <tr><td class="fill">第1版</td><td class="fill">〔YYYY/MM/DD〕</td><td class="fill">新規作成</td><td class="fill">〔氏名〕</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="doc-footer">
+    <span>本マニュアルは院内手順の標準化を目的とした雛形です。〔　〕内は各項目の実情に合わせて記入してください。</span>
+    <span>院外への配布・転載を行う場合は所属施設の承認を得てください。</span>
+  </footer>
+
+</div>
