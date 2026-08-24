@@ -1,4 +1,4 @@
-<title>ボルニューマ看護マニュアル</title>
+<title>スキンブースター薬剤ガイド</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -134,8 +134,8 @@
   .masthead h1 {
     font-family: var(--font-display);
     font-weight: 800;
-    font-size: clamp(28px, 3.4vw, 38px);
-    line-height: 1.3;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.35;
     margin: 0;
     text-wrap: balance;
     color: var(--ink);
@@ -143,6 +143,9 @@
   .masthead .fillname {
     color: var(--ink-faint);
     font-weight: 500;
+    font-size: 0.62em;
+    display: block;
+    margin-top: 4px;
   }
   .doc-meta {
     display: grid;
@@ -226,8 +229,13 @@
     margin: 0;
     color: var(--ink);
   }
+  .sec-sub {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin: -6px 0 16px;
+  }
 
-  p { margin: 0 0 12px; color: var(--ink-soft); max-width: 66ch; }
+  p { margin: 0 0 12px; color: var(--ink-soft); max-width: 68ch; }
   p:last-child { margin-bottom: 0; }
 
   .fillblock {
@@ -242,7 +250,7 @@
   .fillblock:last-child { margin-bottom: 0; }
   .fillblock b { color: var(--ink-soft); font-weight: 700; }
 
-  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
   th, td {
     text-align: left;
     padding: 10px 14px;
@@ -255,33 +263,10 @@
     color: var(--ink-soft);
     font-size: 12.5px;
     letter-spacing: 0.03em;
-    white-space: nowrap;
   }
   .table-wrap { overflow-x: auto; border-radius: 3px; }
-
-  ol.steps { margin: 0; padding: 0; list-style: none; counter-reset: step; display: flex; flex-direction: column; gap: 14px; }
-  ol.steps li {
-    counter-increment: step;
-    display: grid;
-    grid-template-columns: 34px 1fr;
-    gap: 14px;
-    align-items: start;
-  }
-  ol.steps li::before {
-    content: counter(step);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    width: 34px; height: 34px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    color: var(--accent);
-    border: 1px solid var(--accent-soft-border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-  }
-  ol.steps .step-body p { margin: 0; }
-  ol.steps .step-body .fillblock { margin-top: 6px; }
+  td.num, th.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .drugname { font-weight: 700; color: var(--ink); white-space: nowrap; }
 
   ul.plain { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
   ul.plain li { margin-bottom: 6px; }
@@ -327,16 +312,96 @@
     margin: 0 0 8px;
   }
 
-  .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .checklist li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink-soft); font-size: 14px; }
-  .checklist .box {
-    flex-shrink: 0;
-    width: 16px; height: 16px;
-    margin-top: 2px;
-    border: 1.5px solid var(--fill-border);
-    border-radius: 3px;
-    background: var(--fill);
+  /* ---------- Method cards (4 procedure types) ---------- */
+  .method-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .method-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    padding: 16px 18px;
   }
+  .method-card .mnum {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+  .method-card h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    color: var(--ink);
+  }
+  .method-card p { font-size: 13.5px; margin: 0; }
+
+  .feature-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .feature-list li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+  .feature-list .fnum {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent-soft); border: 1px solid var(--accent-soft-border);
+    color: var(--accent); font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .feature-list b { color: var(--ink); }
+  .feature-list p { margin: 2px 0 0; font-size: 13.5px; }
+
+  /* ---------- Drug reference cards ---------- */
+  .drug-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .drug-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface-2);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .drug-card .dhead { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .drug-card h3 { font-family: var(--font-display); font-size: 17px; margin: 0; color: var(--ink); }
+  .drug-card .en { font-size: 11.5px; color: var(--ink-faint); font-style: italic; }
+  .drug-card .ingredient {
+    font-size: 12.5px;
+    background: var(--fill);
+    border: 1px solid var(--fill-border);
+    padding: 7px 10px;
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+  .drug-card .dlabel { font-size: 11px; letter-spacing: 0.06em; color: var(--ink-faint); font-weight: 700; margin-bottom: 2px; }
+  .drug-card ul { margin: 0; padding-left: 1.1em; font-size: 13px; color: var(--ink-soft); }
+  .drug-card ul li { margin-bottom: 3px; }
+  .drug-card .rx {
+    font-size: 12.5px;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-soft-border);
+    border-radius: 3px;
+    padding: 9px 11px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+  .drug-card .rx b { color: var(--accent); }
+  .drug-card.compact { padding: 14px 18px; }
+  .note-line { font-size: 12px; color: var(--ink-faint); margin-top: 4px; }
+
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--ink-soft);
+  }
+  .pill.osaka { background: var(--warn-soft); border-color: var(--warn-soft-border); color: var(--warn); }
 
   footer.doc-footer {
     grid-column: 1 / -1;
@@ -356,7 +421,7 @@
     .toc { position: static; }
     .toc ol { display: flex; flex-wrap: wrap; gap: 4px 4px; border-left: none; }
     .toc a { border-left: none; border: 1px solid var(--border); border-radius: 3px; padding: 6px 10px; }
-    .two-col { grid-template-columns: 1fr; }
+    .two-col, .method-grid, .drug-grid { grid-template-columns: 1fr; }
     section.card { padding: 22px 18px; }
   }
 
@@ -372,13 +437,13 @@
 
   <div class="masthead">
     <div>
-      <p class="eyebrow">看護手順マニュアル ｜ NURSING PROCEDURE MANUAL</p>
-      <h1>ボルニューマ <span class="fillname">投与・取り扱いマニュアル</span></h1>
+      <p class="eyebrow">スタッフ向け薬剤リファレンス ｜ INJECTABLE FORMULATION GUIDE</p>
+      <h1>水光注射・Dr.手打ち・スキンブースター<span class="fillname">注入治療 薬剤ガイド ／ LIGHT CLINIC</span></h1>
     </div>
     <dl class="doc-meta">
-      <dt>対象製品</dt><dd class="fill">〔製品名・剤形を記入〕</dd>
+      <dt>出典資料</dt><dd>スキンブースターカウンセリング資料.pptx</dd>
       <dt>文書番号</dt><dd class="fill">〔管理番号を記入〕</dd>
-      <dt>作成日</dt><dd class="fill">〔YYYY/MM/DD〕</dd>
+      <dt>作成日</dt><dd>2026/08/24</dd>
       <dt>版数</dt><dd class="fill">第〔  〕版</dd>
       <dt>作成者</dt><dd class="fill">〔氏名・職種〕</dd>
       <dt>承認者</dt><dd class="fill">〔氏名・職種〕</dd>
@@ -388,180 +453,409 @@
   <nav class="toc">
     <p class="toc-title">目次 CONTENTS</p>
     <ol>
-      <li><a href="#overview"><span class="num">01</span>概要・目的</a></li>
-      <li><a href="#indication"><span class="num">02</span>適応・対象患者</a></li>
-      <li><a href="#contra"><span class="num">03</span>禁忌・慎重投与</a></li>
-      <li><a href="#supplies"><span class="num">04</span>準備物品</a></li>
-      <li><a href="#dosage"><span class="num">05</span>用法・用量</a></li>
-      <li><a href="#precheck"><span class="num">06</span>投与前確認</a></li>
-      <li><a href="#procedure"><span class="num">07</span>投与手順</a></li>
-      <li><a href="#monitoring"><span class="num">08</span>観察・モニタリング</a></li>
-      <li><a href="#adverse"><span class="num">09</span>副作用・急変時対応</a></li>
-      <li><a href="#storage"><span class="num">10</span>保管・取り扱い</a></li>
-      <li><a href="#disposal"><span class="num">11</span>廃棄方法</a></li>
-      <li><a href="#refs"><span class="num">12</span>参考資料</a></li>
-      <li><a href="#history"><span class="num">13</span>改訂履歴</a></li>
+      <li><a href="#overview"><span class="num">01</span>スキンブースターとは</a></li>
+      <li><a href="#methods"><span class="num">02</span>施術方法の種類</a></li>
+      <li><a href="#hycoox"><span class="num">03</span>水光注射(ハイコックス)の特徴</a></li>
+      <li><a href="#compare"><span class="num">04</span>水光注射 vs Dr.手打ち</a></li>
+      <li><a href="#combo"><span class="num">05</span>お悩み別 組み合わせ提案</a></li>
+      <li><a href="#drugtable"><span class="num">06</span>施術薬剤一覧表</a></li>
+      <li><a href="#drugcards"><span class="num">07</span>薬剤別リファレンス</a></li>
+      <li><a href="#liftcompare"><span class="num">08</span>リフト系薬剤の比較</a></li>
+      <li><a href="#downtime"><span class="num">09</span>痛み・ダウンタイム・注意事項</a></li>
+      <li><a href="#anesthesia"><span class="num">10</span>麻酔の種類と特徴</a></li>
+      <li><a href="#faq"><span class="num">11</span>よくあるご質問</a></li>
+      <li><a href="#sources"><span class="num">12</span>出典・改訂情報</a></li>
     </ol>
   </nav>
 
   <main>
 
     <section class="card" id="overview">
-      <div class="sec-head"><span class="idx">01</span><h2>概要・目的</h2></div>
-      <p>本マニュアルは、〔製品名〕を安全かつ適切に取り扱うための看護手順を定めることを目的とする。</p>
-      <div class="fillblock"><b>記入例：</b>薬効分類、一般名、主成分、本剤の位置づけ（新規導入／既存手順の改訂 等）をここに記載する。</div>
+      <div class="sec-head"><span class="idx">01</span><h2>スキンブースターとは</h2></div>
+      <p>肌の再生・修復に関わる美容成分を真皮層へ直接届ける注入治療。一般的なスキンケアは角質層までしか届かないが、スキンブースターは細胞の代謝やコラーゲン産生を促す"根本ケア"を行う。当院では、再生医療分野でも注目される成分（ヒアルロン酸・ポリヌクレオチド・成長因子など）を使用。それぞれの薬剤には細胞修復、抗酸化、ターンオーバー促進などの異なる働きがあり、肌の状態に合わせてカスタマイズできることが特徴。</p>
+      <div class="method-grid" style="margin-top:16px;">
+        <div class="method-card"><h3>ハリ・弾力</h3><p>コラーゲン・エラスチンの産生を促し、内側から弾力のある肌へ導く</p></div>
+        <div class="method-card"><h3>水分・ツヤ</h3><p>深層から水分を補給し、内側から輝くようなツヤ感を引き出す</p></div>
+        <div class="method-card"><h3>肌質改善</h3><p>毛穴・くすみ・小じわなど様々な悩みにアプローチ</p></div>
+      </div>
+      <p class="note-line">※効果には個人差があります。</p>
     </section>
 
-    <section class="card" id="indication">
-      <div class="sec-head"><span class="idx">02</span><h2>適応・対象患者</h2></div>
-      <div class="two-col">
-        <div class="subgroup">
-          <h3>適応</h3>
-          <div class="fillblock">〔適応疾患・適応となる状態を記入〕</div>
+    <section class="card" id="methods">
+      <div class="sec-head"><span class="idx">02</span><h2>施術方法の種類</h2></div>
+      <p class="sec-sub">当院でのスキンブースターの注入方法は4種類。お悩みに合わせて選択・組み合わせる。</p>
+      <div class="method-grid">
+        <div class="method-card">
+          <h3><span class="mnum">1</span>Dr.手打ち</h3>
+          <p>皮膚の浅い層へ様々な有効成分を医師が注入する施術。気になるところにダイレクトに注入するため、お悩みに合わせた施術が期待できる。</p>
         </div>
-        <div class="subgroup">
-          <h3>対象患者・年齢等の条件</h3>
-          <div class="fillblock">〔年齢・体重・既往歴等の条件を記入〕</div>
+        <div class="method-card">
+          <h3><span class="mnum">2</span>水光注射（ハイコックス）</h3>
+          <p>水光注射を行うための最新注入機器。9本の極細針で肌を吸引しながら薬剤を均一に注入。薬剤の液漏れ（ドラッグロス）がほとんどなく、成分を真皮層へ確実かつ均一に届けられる。</p>
         </div>
+        <div class="method-card">
+          <h3><span class="mnum">3</span>トライフィルプロ</h3>
+          <p>皮下組織を断裂させるサブシジョンと薬剤の注入が同時にできる治療。ニキビ跡で固くなった組織にCO2ガスを注入して剥離し、生成されたスペースに薬剤を注入。クレーター・しわ・毛穴・肌質改善に。</p>
+        </div>
+        <div class="method-card">
+          <h3><span class="mnum">4</span>ポテンツァ（ドラッグデリバリー）</h3>
+          <p>極細針（マイクロニードル）で肌に穴を開け、高周波（RF）照射と同時に専用チップの空気圧で薬剤を真皮層まで導入。ニキビ跡・毛穴・クレーター改善、肌の引き締め（タイトニング）に高い効果。</p>
+        </div>
+      </div>
+      <p class="note-line">※ポテンツァ・トライフィルについては別途カウンセリング資料あり。</p>
+    </section>
+
+    <section class="card" id="hycoox">
+      <div class="sec-head"><span class="idx">03</span><h2>水光注射（ハイコックス）の特徴</h2></div>
+      <p>光り輝く、ハリとツヤのある肌「水光肌」を実現するための治療。美容成分を肌の真皮に均一に注入する事で、様々なお肌悩みを解決する。当院ではハイコックス（HYCOOX）という機械を採用。従来の水光注射に比べ注入時の薬剤漏れが非常に少ないため、お肌に薬剤がしっかりと入り、痛みも少ないという特徴があり、美容先進国の韓国でも人気の機器。</p>
+      <ul class="feature-list" style="margin-top:16px;">
+        <li><span class="fnum">1</span><div><b>均一な注入と高い浸透率</b><p>吸引技術により、安定した深さと量で成分をムラなく注入。従来の機械よりも高価な薬剤を効率的に真皮層へ届ける。</p></div></li>
+        <li><span class="fnum">2</span><div><b>液漏れの軽減</b><p>他の水光注射機械で問題であった液漏れを軽減。針を刺す瞬間に陰圧をかけることで薬剤のロス（漏れ）を減らす。</p></div></li>
+        <li><span class="fnum">3</span><div><b>痛みの軽減</b><p>9本の極細針を使用し、手打ち（手動注射）よりも短時間で施術が完了するため、痛みや内出血のリスクが少ないとされる。</p></div></li>
+        <li><span class="fnum">4</span><div><b>カスタマイズ性</b><p>肌の悩みに合わせ、ヒアルロン酸、ボトックス、リジュラン、ジュベルック、エクソソームなどをブレンドして注入可能。</p></div></li>
+      </ul>
+      <p class="note-line">※効果には個人差があります。</p>
+    </section>
+
+    <section class="card" id="compare">
+      <div class="sec-head"><span class="idx">04</span><h2>水光注射 vs Dr.手打ち 比較表</h2></div>
+      <p class="sec-sub">お悩みや目的に合わせて、最適な施術方法を選択する。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>比較項目</th><th>水光注射</th><th>Dr.手打ち注射</th></tr></thead>
+          <tbody>
+            <tr><th>注入方法</th><td>HYCOOXによる均一注入</td><td>医師が手で直接・丁寧に注入</td></tr>
+            <tr><th>注入範囲</th><td>顔全体・広範囲をカバー</td><td>深さ・量・部位を細かくコントロールし、気になる部位への集中アプローチが可能</td></tr>
+            <tr><th>仕上がり</th><td>均一・安定した仕上がり</td><td>部位に合わせたカスタム注入</td></tr>
+            <tr><th>向いているお悩み</th><td>全体的なハリ・ツヤ改善</td><td>くすみ・乾燥・毛穴など気になる部位への集中的なアプローチ</td></tr>
+            <tr><th>こんな方に</th><td>初めての方／全体改善をお望みの方</td><td>お悩みが具体的な方／特定の部位が気になる方／より細かいケアをご希望の方</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note-line">※効果の感じ方には個人差があります。</p>
+    </section>
+
+    <section class="card" id="combo">
+      <div class="sec-head"><span class="idx">05</span><h2>お悩み別 組み合わせ提案</h2></div>
+      <p class="sec-sub">お悩みと施術・薬剤を組み合わせることで、より効果的なアプローチが可能。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>お悩み</th><th>推奨施術</th><th>薬剤</th></tr></thead>
+          <tbody>
+            <tr><td>全体的なハリ・ツヤ・肌質改善</td><td>水光注射</td><td>リジュランアイ／プルリアルデンシファイ</td></tr>
+            <tr><td>毛穴の開き・皮脂コントロール</td><td>水光注射</td><td>マイクロボトックス／ジュベルック</td></tr>
+            <tr><td>ニキビ跡・クレーター改善</td><td>水光／ポテンツァ</td><td>ジュベルック</td></tr>
+            <tr><td>くすみ・美白・色素沈着</td><td>水光 or 手打ち</td><td>ネオファウンド</td></tr>
+            <tr><td>目元のクマ・小じわ集中ケア</td><td>Dr.手打ち（目元）</td><td>リジュランアイ／ジャルプロヤングアイ／スネコスパフォルマ</td></tr>
+            <tr><td>たるみ・リフトアップ</td><td>Dr.手打ち（注入）</td><td>プロファイロ／ジャルプロスーパーハイドロ</td></tr>
+            <tr><td>保湿・乾燥・首のシワ</td><td>Dr.手打ち</td><td>スネコスパフォルマ／首の皺：プロファイロ・ボライト</td></tr>
+            <tr><td>肌荒れ・炎症ケア</td><td>水光 or 手打ち</td><td>ASCE+</td></tr>
+            <tr><td>総合エイジングケア・肌の土台改善</td><td>Dr.手打ち</td><td>ハイドロブースター（ミックス／コンプリート）／ボライト</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
-    <section class="card" id="contra">
-      <div class="sec-head"><span class="idx">03</span><h2>禁忌・慎重投与</h2></div>
-      <div class="callout danger">
+    <section class="card" id="drugtable">
+      <div class="sec-head"><span class="idx">06</span><h2>施術薬剤一覧表</h2></div>
+      <p class="sec-sub">"中身の違い"を知ることが、最適な治療への第一歩。各薬剤の主成分・効果傾向・推奨間隔をまとめた一覧（詳細な対応施術の可否は「07 薬剤別リファレンス」および元資料の一覧表もあわせて確認）。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>薬剤名</th><th>主な成分</th><th>主な効果・効能</th><th>推奨施術間隔</th><th>推奨回数</th></tr></thead>
+          <tbody>
+            <tr><td class="drugname">リジュランアイ</td><td>PN（ポリヌクレオチド）</td><td>目元の小じわ、ハリ・ツヤ、クマ、乾燥、皮膚の再生など</td><td class="num">2週間</td><td>1クール：4回<br>メンテナンス：3〜6ヶ月に1回</td></tr>
+            <tr><td class="drugname">プルリアルデンシファイ</td><td>PN＋非架橋ヒアルロン酸＋マンニトール</td><td>小じわ、色むら、赤み、乾燥、くすみ、ハリ・ツヤ、皮膚の再生など</td><td class="num">3週間</td><td>1クール：3回<br>メンテナンス：3ヶ月に1回</td></tr>
+            <tr><td class="drugname">ジュベルック</td><td>PDLLA（ポリ乳酸）＋非架橋ヒアルロン酸</td><td>ハリ・ツヤ、毛穴の開き、ニキビ跡・クレーター、小じわなど</td><td class="num">1ヶ月</td><td>1クール：3回<br>メンテナンス：4〜6ヶ月に1回</td></tr>
+            <tr><td class="drugname">マックーム</td><td>PLLA（ポリ乳酸）＋非架橋ヒアルロン酸</td><td>ニキビ跡・クレーター、肌のハリ、毛穴の開きなど</td><td class="num">1ヶ月</td><td>1クール：3回<br>メンテナンス：4〜6ヶ月に1回</td></tr>
+            <tr><td class="drugname">エクソソーム（ASCE+）</td><td>ヒト脂肪由来幹細胞エクソソーム＋成長因子＋ペプチド＋グルタチオン＋ヒアルロン酸など</td><td>ハリ・キメ、小じわ、毛穴、皮膚の再生、抗酸化作用、炎症改善など</td><td class="num">1ヶ月</td><td>1クール：3〜5回</td></tr>
+            <tr><td class="drugname">スネコスパフォルマ</td><td>非架橋ヒアルロン酸＋6種のアミノ酸</td><td>ハリ・キメ、小じわ、青クマなど</td><td class="num">2週間</td><td>1クール：3〜4回<br>メンテナンス：6ヶ月〜1年に1回</td></tr>
+            <tr><td class="drugname">ネオファウンド</td><td>非架橋ヒアルロン酸＋3種の抗酸化成分＋3種のアミノ酸＋ペプチド</td><td>美白・くすみ、色素沈着、茶クマ、ハリ、小じわなど</td><td class="num">2〜3週間</td><td>1クール：3〜4回<br>メンテナンス：3〜6ヶ月に1回</td></tr>
+            <tr><td class="drugname">ジャルプロヤングアイ</td><td>2種の低分子非架橋ヒアルロン酸＋7種のアミノ酸＋3種のペプチド</td><td>目元のハリ・小じわ、くすみ改善、クマ、目まわりの乾燥</td><td class="num">1〜2週間</td><td>1クール：4回<br>メンテナンス：3ヶ月に1回</td></tr>
+            <tr><td class="drugname">ジャルプロスーパーハイドロ</td><td>低分子・高分子非架橋ヒアルロン酸＋7種のアミノ酸＋7種のペプチド</td><td>ハリ・ツヤ、リフトアップ、タイトニング、乾燥、小じわ</td><td class="num">1ヶ月</td><td>1クール：3回<br>メンテナンス：3〜6ヶ月に1回</td></tr>
+            <tr><td class="drugname">ボライト（スキンバイブ）</td><td>架橋型ヒアルロン酸</td><td>肌の潤い（保水性）、ハリ（弾力性）、小じわ、首の横ジワなど</td><td class="num">半年</td><td>1クール：1回<br>メンテナンス：6ヶ月〜1年に1回</td></tr>
+            <tr><td class="drugname">プロファイロ</td><td>非架橋 低分子・高分子ヒアルロン酸</td><td>ハリ、ほうれい線の軽減、リフトアップ、頬のボリューム改善、首の皺</td><td class="num">1ヶ月</td><td>1クール：2回<br>メンテナンス：6ヶ月に1回</td></tr>
+            <tr><td class="drugname">マイクロボトックス</td><td>ボツリヌストキシン</td><td>皮脂分泌抑制、毛穴の開き</td><td class="num">3〜6ヶ月</td><td>単体または混注</td></tr>
+            <tr><td class="drugname">ハイドロブースター</td><td>ハイドロ（3種のヒアルロン酸）＋ボツリヌストキシン／エクソソーム／幹細胞培養上清液（組み合わせにより ブレンド・ミックス・コンプリート）</td><td>ハリ、弾力性、ツヤ、肌質改善のほか組み合わせに応じ多様な悩みに対応</td><td class="num">1ヶ月</td><td>1クール：3〜5回<br>メンテナンス：6ヶ月〜1年に1回</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note-line">※施術回数・間隔は、使用機器や患者様の状態により異なる場合があります。効果には個人差があります。</p>
+    </section>
+
+    <section class="card" id="drugcards">
+      <div class="sec-head"><span class="idx">07</span><h2>薬剤別リファレンス</h2></div>
+      <p class="sec-sub">各薬剤の特徴・期待できる効果の傾向・向いている方・おすすめの施術と間隔。医師・スタッフへの説明およびカウンセリング時の参照用。</p>
+
+      <div class="drug-grid">
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ジュベルック</h3><span class="en">Juvelook</span></div>
+          <div class="ingredient">主成分：PDLLA（ポリ乳酸）＋非架橋ヒアルロン酸</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>毛穴の開きが気になる方に</li><li>ニキビ跡（クレーター）のケアに</li><li>ハリ・ツヤのアップが期待される</li><li>小じわのケアに</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>毛穴やニキビ跡が目立つ方</li><li>長期的に肌質を改善したい方</li><li>コラーゲン量を増やしたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射／ポテンツァ<br><b>間隔：</b>1ヶ月　<b>回数：</b>3回（1クール）　<b>メンテナンス：</b>4〜6ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>プルリアルデンシファイ</h3><span class="en">Pluryal Densify</span></div>
+          <div class="ingredient">主成分：PN（ポリヌクレオチド）＋非架橋ヒアルロン酸＋マンニトール</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>小じわ・赤み・くすみのケアに</li><li>乾燥・ハリ・ツヤの改善が期待される</li><li>皮膚の再生・修復に</li><li>色むらの改善が期待される</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>肌の赤みやくすみが気になる方</li><li>敏感肌・炎症を起こしやすい肌の方</li><li>肌全体のトーンを整えたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射<br><b>間隔：</b>3週間　<b>回数：</b>3回（1クール）　<b>メンテナンス：</b>3ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>リジュランアイ</h3><span class="en">Rejuran i</span></div>
+          <div class="ingredient">主成分：PN（ポリヌクレオチド）</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>目元の小じわのケアに</li><li>目元のハリ・ツヤアップが期待される</li><li>クマ（青クマ・茶クマ）のケアに</li><li>目元の乾燥改善に</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>目元の小じわが気になる方</li><li>クマ（青クマ・茶クマ）が悩みの方</li><li>目元を集中的にケアしたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射<br><b>間隔：</b>2週間　<b>回数：</b>4回（1クール）　<b>メンテナンス：</b>3〜6ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>スネコスパフォルマ</h3><span class="en">Sunekos Performa</span></div>
+          <div class="ingredient">主成分：非架橋ヒアルロン酸＋6種のアミノ酸</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>ハリ・キメの改善が期待される</li><li>目元・口元の小じわのケアに</li><li>青クマのケアに</li><li>肌全体のトーンアップに</li><li>首のしわに</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>青クマが気になる方</li><li>目元・口元のケアをしたい方</li><li>肌のキメを整えたい方</li><li>首の小皺が気になる方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射／ポテンツァ<br><b>間隔：</b>2週間　<b>回数：</b>3〜4回（1クール）　<b>メンテナンス：</b>6ヶ月〜1年に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ジャルプロスーパーハイドロ</h3><span class="en">JALUPRO Super Hydro</span></div>
+          <div class="ingredient">主成分：2種の非架橋ヒアルロン酸＋7種のアミノ酸＋3種のペプチド</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>"リガメント強化"：肌の土台となるリガメントを強化し、たるみにアプローチして自然なリフトアップを目指すエイジングケア</li><li>肌再生：コラーゲンやエラスチンの再生促進で肌質改善</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>顔全体へリフトアップのアプローチを行いたい方</li><li>引き締めをお望みの方</li><li>他施術を行う前の肌作りを行いたい方</li></ul>
+          </div>
+          <div class="rx"><b>作用する層：</b>真皮層・皮下組織・靭帯<br><b>おすすめの施術：</b>水光注射／Dr.手打ち注射（ポイントで注入）<br><b>間隔：</b>1ヶ月（3回で1クール）</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ジャルプロヤングアイ</h3><span class="en">JALUPRO Young Eye</span></div>
+          <div class="ingredient">主成分：非架橋ヒアルロン酸＋アミノ酸＋ペプチド</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>目元のハリ・小じわ・クマに</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>目元のハリ・くすみが気になる方（ヤングアイ）</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射<br><b>間隔：</b>1〜2週間（4回クール）</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ネオファウンド</h3><span class="en">Neofound</span></div>
+          <div class="ingredient">主成分：非架橋ヒアルロン酸＋3種の抗酸化成分（アセチルシステイン、レスベラトロール、ナイアシンアミド）＋3種のアミノ酸＋ペプチド</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>美白・くすみ改善が期待される</li><li>色素沈着・茶クマのケアに</li><li>ハリ・小じわの改善が期待される</li><li>抗酸化・エイジングケアに</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>くすみや肌の透明感が気になる方</li><li>茶クマが悩みの方</li><li>色素沈着をケアしたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射／ポテンツァ<br><b>間隔：</b>2〜3週間　<b>回数：</b>3〜4回（1クール）　<b>メンテナンス：</b>3〜6ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ASCE+（エクソソーム）</h3><span class="en">ASCE+ SRLV</span></div>
+          <div class="ingredient">主成分：ヒト脂肪由来幹細胞エクソソーム＋成長因子＋ペプチド＋グルタチオン＋ヒアルロン酸</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>ハリ・キメの改善が期待される</li><li>小じわ・毛穴のケアに</li><li>赤み・肌荒れの鎮静に</li><li>抗酸化・肌の再生促進に</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>肌のくすみ・赤みが気になる方</li><li>肌荒れ・炎症でお悩みの方</li><li>より高い肌質改善をお求めの方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>水光注射／Dr.手打ち注射／ポテンツァ（他薬剤との組み合わせも可能）<br><b>間隔：</b>1ヶ月　<b>回数：</b>3〜5回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>マイクロボトックス</h3><span class="en">Micro Botox</span></div>
+          <div class="ingredient">主成分：ボツリヌストキシン</div>
+          <div>
+            <p class="dlabel">主な効果の傾向</p>
+            <ul><li>毛穴の引き締めが期待される</li><li>皮脂分泌のコントロールに</li><li>肌のキメを整えるのに</li><li>ニキビ・皮脂トラブルのケアに</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>毛穴の開きが気になる方</li><li>皮脂が多くニキビができやすい方</li><li>肌のキメを整えたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>単体＝水光注射／Dr.手打ち注射（他薬剤との組み合わせは各注入機器で可能）<br><b>間隔：</b>3〜6ヶ月</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>ハイドロブースター</h3><span class="en">Hydro Booster</span></div>
+          <div class="ingredient">主成分（ハイドロ）：3種のヒアルロン酸（高・中・低分子）</div>
+          <div>
+            <p class="dlabel">組み合わせと効果の傾向</p>
+            <ul><li>【ブレンド】ハイドロ＋ボツリヌストキシン(初回)：ハリ・ツヤ＋毛穴・小じわの引き締め</li><li>【ミックス】＋エクソソーム(ASCE+)：上記＋細胞修復・バリア機能改善</li><li>【コンプリート】＋幹細胞培養上清液：上記＋コラーゲン促進・総合エイジングケア</li></ul>
+          </div>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>毛穴・小じわ・ハリを一度にケアしたい方</li><li>エイジングケアに本格的に取り組みたい方</li><li>肌の土台から底上げしたい方</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>Dr.手打ち注射（手打ちのみ）<br><b>間隔：</b>1ヶ月　<b>回数：</b>3〜5回（1クール）　<b>メンテナンス：</b>6ヶ月〜1年に1回</div>
+        </div>
+
+        <div class="drug-card">
+          <div class="dhead"><h3>スキンバイブ（ボライト）<span class="pill osaka" style="margin-left:6px;">大阪院のみ</span></h3><span class="en">SKINVIVE</span></div>
+          <div class="ingredient">主成分：架橋ヒアルロン酸</div>
+          <p>従来のヒアルロン酸が主にボリュームを補うことで見た目の若返りを実現していたのに対し、スキンバイブは肌そのものの質を向上させることに主眼を置く。皮膚の浅い層（表皮〜真皮層）に働きかけ、肌の保水力を高め、自然なハリと弾力を取り戻す。効果は4〜9ヶ月持続し、最大で9ヶ月間の保湿効果が得られる。</p>
+          <div>
+            <p class="dlabel">向いている方</p>
+            <ul><li>化粧水や保湿クリームを塗っても保湿された感じがしない</li><li>皮膚表面の毛穴や小じわが気になるようになった</li><li>乾燥による肌荒れで化粧ノリが悪い</li><li>首や額の横じわが気になる</li></ul>
+          </div>
+          <div class="rx"><b>おすすめの施術：</b>Dr.手打ち注射（手打ちのみ）<br><b>用量目安：</b>両頬 2本(2cc)／額・首 1本(1cc)<br><b>間隔：</b>6〜9ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card compact">
+          <div class="dhead"><h3>マックーム</h3><span class="en">Maccume</span></div>
+          <div class="ingredient">主成分：PLLA（ポリ乳酸）＋非架橋ヒアルロン酸</div>
+          <p>ニキビ跡・クレーター、肌のハリ、毛穴の開きなどに。皮下組織を断裂させ薬剤を注入するトライフィルプロでの導入に適した薬剤。</p>
+          <div class="rx"><b>間隔：</b>1ヶ月　<b>回数：</b>3回（1クール）　<b>メンテナンス：</b>4〜6ヶ月に1回</div>
+        </div>
+
+        <div class="drug-card compact">
+          <div class="dhead"><h3>プロファイロ</h3><span class="en">Profhilo</span></div>
+          <div class="ingredient">主成分：非架橋 低分子・高分子ヒアルロン酸</div>
+          <p>ハリ、ほうれい線の軽減、リフトアップ、頬のボリューム改善、首の皺に。真皮〜皮下組織にアプローチし、支える＋引き締めで自然な若返りを図る（詳細は「08 リフト系薬剤の比較」を参照）。</p>
+          <div class="rx"><b>おすすめの施術：</b>Dr.手打ち注射（ポイント）／水光注射<br><b>間隔：</b>1ヶ月　<b>回数：</b>2回（1クール）　<b>メンテナンス：</b>6ヶ月に1回</div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="card" id="liftcompare">
+      <div class="sec-head"><span class="idx">08</span><h2>リフト系薬剤の比較</h2></div>
+      <p class="sec-sub">プロファイロ・ジャルプロスーパーハイドロ・ヒアルロン酸注入の比較</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>プロファイロ</th><th>ジャルプロスーパーハイドロ</th><th>ヒアルロン酸注入</th></tr></thead>
+          <tbody>
+            <tr><th>主成分</th><td>高・低分子の非架橋ヒアルロン酸</td><td>2種の非架橋ヒアルロン酸＋7種のアミノ酸＋3種のペプチド</td><td>架橋ヒアルロン酸</td></tr>
+            <tr><th>アプローチ層</th><td>真皮〜皮下組織</td><td>真皮・皮下組織・靭帯（リガメント）</td><td>骨上・脂肪層・皮下など目的に応じて注入</td></tr>
+            <tr><th>主な効果</th><td>肌のボリュームUP／ハリ・弾力UP／小じわ改善／ナチュラルな肌質改善</td><td>フェイスラインのたるみ予防・改善／リフトアップ＆引き締め／ハリ・弾力UP／小じわ改善</td><td>ボリューム形成／輪郭形成／ほうれい線や凹み改善／鼻・顎・フェイスライン形成</td></tr>
+            <tr><th>仕上がりイメージ</th><td>自然に肌が元気になる</td><td>支える＋引き締め</td><td>形を整える・ボリュームを足す</td></tr>
+            <tr><th>おすすめ</th><td>肌の痩せ感／ハリ低下／自然な若返り</td><td>たるみ／フェイスラインのもたつき／引き締め</td><td>コケ・凹み・輪郭改善／ほうれい線や凹み・部分的なボリューム不足</td></tr>
+            <tr><th>適応部位</th><td>顔・首・手の甲</td><td>顔・首</td><td>額・こめかみ・頬・ほうれい線・唇・顎など</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="downtime">
+      <div class="sec-head"><span class="idx">09</span><h2>痛み・ダウンタイム・注意事項について</h2></div>
+      <div class="two-col">
+        <div class="subgroup">
+          <h3>施術中の痛み</h3>
+          <p>痛みの感じ方には個人差がある。針を刺す瞬間の痛みはあるが、麻酔を使用することで軽減できる。麻酔クリーム・笑気麻酔・全身麻酔のオプションもあり。</p>
+          <h3>赤み・ひりつき</h3>
+          <p>施術直後〜翌日にかけて赤みやひりつきが見られることがある。通常は数日程度で落ち着くことが多い。</p>
+          <h3>膨疹（ふくらみ）</h3>
+          <p>薬剤によっては注入後しばらく小さなふくらみが見られることがある。多くの場合、数時間〜数日程度で引いていく。</p>
+          <h3>内出血</h3>
+          <p>針を使用するため、内出血が生じることがある。1〜2週間程度で徐々に消退することが多いが、軽減期間は個人差がある。</p>
+        </div>
+        <div>
+          <div class="callout warn" style="flex-direction:column; gap:8px;">
+            <span class="tag">施術後の注意事項</span>
+            <ul class="plain" style="margin-top:6px;">
+              <li>洗顔・メイク・スキンケアは12時間後から</li>
+              <li>保湿は鎮静パック・CMTクリーム・ワセリンのみ直後から可</li>
+              <li>日焼け止めは防腐剤フリーなら直後から可</li>
+              <li>入浴・運動・飲酒・サウナは当日禁止</li>
+              <li>シャワーは可能だが、顔に水は直接かけてはいけない</li>
+              <li>施術部位を強くこすったり触れない</li>
+              <li>日頃から紫外線対策を念入りに行う</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="note-line">※症状の程度・期間には個人差があります。ご不安な点はお気軽にスタッフへご相談ください。</p>
+    </section>
+
+    <section class="card" id="anesthesia">
+      <div class="sec-head"><span class="idx">10</span><h2>当院の麻酔の種類と特徴</h2></div>
+      <p class="sec-sub">施術内容・痛みの程度に合わせて最適な麻酔を提案する。麻酔科医が常駐し安全な麻酔管理を徹底。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>全身麻酔</th><th>静脈麻酔</th><th>リラックス麻酔</th></tr></thead>
+          <tbody>
+            <tr><th>意識状態</th><td>完全無意識・記憶なし</td><td>半覚醒（眠るが軽い刺激に反応）</td><td>完全に覚醒（意識あり）</td></tr>
+            <tr><th>適応</th><td>長時間施術・強い痛みを伴う施術</td><td>中等度の痛み・リラックスしたい方</td><td>短時間施術・緊張を軽減したい方</td></tr>
+            <tr><th>特徴</th><td>痛み・緊張・音をすべて遮断</td><td>不安軽減・回復が早い・会話可能</td><td>身体のリラックス目的</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" id="faq">
+      <div class="sec-head"><span class="idx">11</span><h2>よくあるご質問</h2></div>
+      <p class="sec-sub">患者様からよくいただくご質問。カウンセリング時の回答例として活用する。</p>
+      <div class="callout warn" style="flex-direction:column; gap:14px;">
+        <div><b style="color:var(--ink);">Q. 水光注射と手打ちはどちらがいいですか？</b><p style="margin-top:4px;">優劣の差はなく、お悩みによって向き不向きが異なる。全体改善なら水光注射、特定部位への集中ケアには手打ちがご提案しやすい方法。</p></div>
+        <div><b style="color:var(--ink);">Q. 効果はいつごろから感じられますか？</b><p style="margin-top:4px;">薬剤や個人差によって異なる。即日〜数日で変化を感じる方もいれば、1〜2ヶ月かけてゆっくり実感される方もいる。</p></div>
+        <div><b style="color:var(--ink);">Q. どの薬剤が自分に合っているか分かりません</b><p style="margin-top:4px;">カウンセリングでお肌の状態・お悩みを伺ったうえで、医師・スタッフが最適な薬剤を提案する。まずはお気軽にご相談を。</p></div>
+        <div><b style="color:var(--ink);">Q. 施術後すぐにメイクできますか？</b><p style="margin-top:4px;">施術後12時間はメイクを控える。大切なご予定がある際は事前にスタッフへ相談。</p></div>
+      </div>
+      <div class="callout danger" style="margin-top:14px;">
         <span class="tag">禁忌</span>
-        <p>〔投与してはならない患者・状態を記入〕</p>
-      </div>
-      <div class="callout warn">
-        <span class="tag">慎重投与</span>
-        <p>〔慎重な判断を要する患者・状態を記入〕</p>
+        <p><b>妊娠中・授乳中の方はスキンブースター注射をお受けいただけません。</b>詳細はカウンセリング時に確認すること。</p>
       </div>
     </section>
 
-    <section class="card" id="supplies">
-      <div class="sec-head"><span class="idx">04</span><h2>準備物品</h2></div>
-      <ul class="plain">
-        <li>〔薬剤本体・添付溶解液など〕</li>
-        <li>〔注射器・注射針のサイズ〕</li>
-        <li>〔消毒用品〕</li>
-        <li>〔救急対応物品（アナフィラキシー対応セット等）〕</li>
-        <li>〔記録用紙・説明用資材〕</li>
-      </ul>
-    </section>
-
-    <section class="card" id="dosage">
-      <div class="sec-head"><span class="idx">05</span><h2>用法・用量</h2></div>
+    <section class="card" id="sources">
+      <div class="sec-head"><span class="idx">12</span><h2>出典・改訂情報</h2></div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>対象</th><th>用量</th><th>投与経路</th><th>投与間隔・回数</th></tr>
-          </thead>
+          <thead><tr><th>項目</th><th>内容</th></tr></thead>
           <tbody>
-            <tr><td class="fill">〔対象区分〕</td><td class="fill">〔用量〕</td><td class="fill">〔経路：皮下／筋肉内 等〕</td><td class="fill">〔間隔・回数〕</td></tr>
-            <tr><td class="fill">〔対象区分〕</td><td class="fill">〔用量〕</td><td class="fill">〔経路〕</td><td class="fill">〔間隔・回数〕</td></tr>
+            <tr><th>出典資料</th><td>「水光注射・Dr.手打ち・スキンブースター製剤 カウンセリング資料」LIGHT CLINIC（Google スライド、全24枚）</td></tr>
+            <tr><th>作成日</th><td>2026/08/24</td></tr>
+            <tr><th>版数</th><td class="fill">第〔　〕版</td></tr>
+            <tr><th>改訂内容</th><td>新規作成（患者向けカウンセリング資料を、スタッフ向け薬剤リファレンスとして再構成）</td></tr>
+            <tr><th>改訂者</th><td class="fill">〔氏名〕</td></tr>
           </tbody>
         </table>
       </div>
-    </section>
-
-    <section class="card" id="precheck">
-      <div class="sec-head"><span class="idx">06</span><h2>投与前確認</h2></div>
-      <ul class="checklist">
-        <li><span class="box"></span>患者本人確認（氏名・生年月日）</li>
-        <li><span class="box"></span>アレルギー歴・既往歴の確認</li>
-        <li><span class="box"></span>直近の体調・発熱の有無</li>
-        <li><span class="box"></span>説明と同意（インフォームドコンセント）の確認</li>
-        <li><span class="box"></span>薬剤の外観・使用期限・ロット番号確認</li>
-        <li><span class="box"></span>〔施設固有の確認項目を追記〕</li>
-      </ul>
-    </section>
-
-    <section class="card" id="procedure">
-      <div class="sec-head"><span class="idx">07</span><h2>投与手順</h2></div>
-      <ol class="steps">
-        <li><div class="step-body"><p>手指衛生を行い、必要な防護具を装着する。</p></div></li>
-        <li><div class="step-body"><p>薬剤の外観・混濁の有無・使用期限を確認する。</p><div class="fillblock">〔溶解・調製方法があれば記入〕</div></div></li>
-        <li><div class="step-body"><p>患者に体位・部位を説明し、安全な体勢を確保する。</p></div></li>
-        <li><div class="step-body"><p>投与部位を消毒し、乾燥を待つ。</p><div class="fillblock">〔部位：三角筋・大腿外側広筋 等を記入〕</div></div></li>
-        <li><div class="step-body"><p>手順に従い投与する。</p><div class="fillblock">〔穿刺角度・投与速度など具体的手技を記入〕</div></div></li>
-        <li><div class="step-body"><p>投与後、患者の状態を一定時間観察する。</p><div class="fillblock">〔観察時間の目安を記入〕</div></div></li>
-        <li><div class="step-body"><p>実施記録（薬剤名・ロット番号・投与部位・実施者）を記載する。</p></div></li>
-      </ol>
-    </section>
-
-    <section class="card" id="monitoring">
-      <div class="sec-head"><span class="idx">08</span><h2>観察・モニタリング</h2></div>
-      <ul class="plain">
-        <li>〔バイタルサイン測定タイミング〕</li>
-        <li>〔局所反応（発赤・腫脹・疼痛）の観察ポイント〕</li>
-        <li>〔全身反応の観察ポイント〕</li>
-        <li>〔経過観察の終了基準〕</li>
-      </ul>
-    </section>
-
-    <section class="card" id="adverse">
-      <div class="sec-head"><span class="idx">09</span><h2>副作用・急変時対応</h2></div>
-      <div class="two-col">
-        <div class="subgroup">
-          <h3>主な副作用</h3>
-          <div class="fillblock">〔頻度の高い副作用・局所反応を記入〕</div>
-        </div>
-        <div class="subgroup">
-          <h3>重大な副作用</h3>
-          <div class="fillblock">〔アナフィラキシー等、重篤な副作用を記入〕</div>
-        </div>
-      </div>
-      <div class="callout danger">
-        <span class="tag">急変時</span>
-        <p>〔アナフィラキシー等急変時の初期対応手順・報告フロー・救急要請基準を記入〕</p>
-      </div>
-    </section>
-
-    <section class="card" id="storage">
-      <div class="sec-head"><span class="idx">10</span><h2>保管・取り扱い</h2></div>
-      <div class="table-wrap">
-        <table>
-          <tbody>
-            <tr><th>保管温度</th><td class="fill">〔温度範囲を記入〕</td></tr>
-            <tr><th>遮光の要否</th><td class="fill">〔要／不要〕</td></tr>
-            <tr><th>凍結の可否</th><td class="fill">〔可／不可〕</td></tr>
-            <tr><th>開封後の使用期限</th><td class="fill">〔期限を記入〕</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <section class="card" id="disposal">
-      <div class="sec-head"><span class="idx">11</span><h2>廃棄方法</h2></div>
-      <p>使用済み鋭利器材・残薬は院内の医療廃棄物基準に従い廃棄する。</p>
-      <div class="fillblock">〔バイアル・注射器等の分別区分、施設の廃棄ルールを記入〕</div>
-    </section>
-
-    <section class="card" id="refs">
-      <div class="sec-head"><span class="idx">12</span><h2>参考資料</h2></div>
-      <ul class="plain">
-        <li>〔添付文書（IF文書）名・版数〕</li>
-        <li>〔メーカー提供資料〕</li>
-        <li>〔関連ガイドライン〕</li>
-      </ul>
-    </section>
-
-    <section class="card" id="history">
-      <div class="sec-head"><span class="idx">13</span><h2>改訂履歴</h2></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>版数</th><th>改訂日</th><th>改訂内容</th><th>改訂者</th></tr></thead>
-          <tbody>
-            <tr><td class="fill">第1版</td><td class="fill">〔YYYY/MM/DD〕</td><td class="fill">新規作成</td><td class="fill">〔氏名〕</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <p class="note-line">※本ガイドは院内カウンセリング資料をもとに作成した参考資料であり、効果を保証するものではありません。効果には個人差があります。ポテンツァ・トライフィルの詳細手技、および各薬剤の対応施術の全組み合わせは、別途カウンセリング資料・添付文書もあわせてご確認ください。</p>
     </section>
 
   </main>
 
   <footer class="doc-footer">
-    <span>本マニュアルは院内手順の標準化を目的とした雛形です。〔　〕内は各項目の実情に合わせて記入してください。</span>
+    <span>本ガイドはスタッフ向け参考資料です。患者様への説明内容は最新の添付文書・院内ルールに従ってください。</span>
     <span>院外への配布・転載を行う場合は所属施設の承認を得てください。</span>
   </footer>
 
